@@ -12,11 +12,6 @@ public class AnalyticsRepository : BaseRepository, IAnalyticRepository
     {
     }
 
-    public async Task<IEnumerable<Analytic>> ListAsync()
-    {
-        return await _context.Analytics.ToListAsync();
-    }
-
     public async Task AddAsync(Analytic analytic)
     {
         await _context.Analytics.AddAsync(analytic);
@@ -27,7 +22,7 @@ public class AnalyticsRepository : BaseRepository, IAnalyticRepository
         return await _context.Analytics.FindAsync(id);
     }
 
-    public async Task<IEnumerable<Analytic>> FindByMonthAsync(int month)
+    public async Task<IEnumerable<Analytic>> ListByMonthAsync(int month)
     {
         return await _context.Analytics
             .Where(p => p.Month == month)
