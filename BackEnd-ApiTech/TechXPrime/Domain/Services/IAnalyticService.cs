@@ -9,4 +9,5 @@ public interface IAnalyticService
     Task<AnalyticResponse> SaveAsync(Analytic analytic);
     Task<AnalyticResponse> UpdateAsync(int id, Analytic analytic);
     Task<AnalyticResponse> DeleteAsync(int id);
+    Task<IEnumerable<Analytic>> ListAsync();
 }

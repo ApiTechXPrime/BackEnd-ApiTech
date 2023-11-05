@@ -16,7 +16,12 @@ public class AnalyticService : IAnalyticService
         _analyticRepository = analyticRepository;
         _unitOfWork = unitOfWork;
     }
-
+    
+    public async Task<IEnumerable<Analytic>> ListAsync()
+    {
+        return await _analyticRepository.ListAsync();
+    }
+    
     public async Task<IEnumerable<Analytic>> ListByMonthAsync(int month)
     {
         return await _analyticRepository.ListByMonthAsync(month);
