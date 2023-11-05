@@ -1,15 +1,16 @@
 ﻿using BackEnd_ApiTech.security.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
+using Microsoft.EntityFrameworkCore;
 namespace BackEnd_ApiTech.Shared.Persistence.Contexts;
 
 public class AppDbContext: DbContext
 {
-    public DbSet<User> Users { get; set; }
     
+    public DbSet<User> Users { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
+    
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -26,7 +27,6 @@ public class AppDbContext: DbContext
         builder.Entity<User>().Property(p => p.Birthday).IsRequired();
         builder.Entity<User>().Property(p => p.Password).IsRequired();
         builder.Entity<User>().Property(p => p.ConfirmPassword).IsRequired();
-        builder.Entity<User>().Property(p => p.Role).IsRequired();
       
     }
 }
