@@ -2,6 +2,7 @@
 using BackEnd_ApiTech.security.Domain.Repositories;
 using BackEnd_ApiTech.Shared.Persistence.Contexts;
 using BackEnd_ApiTech.Shared.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd_ApiTech.security.Persistence.Repository;
 
@@ -12,44 +13,46 @@ public class UserRepository:BaseRepository, IUserRepository
         
     }
 
-    public Task<IEnumerable<User>> ListAsync()
+    public async Task<IEnumerable<User>> ListAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Users.ToListAsync();
     }
 
-    public Task AddAsync(User user)
+    public async Task AddAsync(User user)
     {
-        throw new NotImplementedException();
+        await _context.Users.AddAsync(user);
     }
 
-    public Task<User> FindByIdAsync(int id)
+    public async Task<User> FindByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Users.FindAsync(id);
     }
 
-    public Task<User> FindByUserEmailAsync(string Email)
+    public async Task<User> FindByUserEmailAsync(string Email)
     {
-        throw new NotImplementedException();
+        return await _context.Users.SingleOrDefaultAsync(x =>
+            x.Email == Email);
+
     }
 
     public bool ExistsByUserEmail(string Email)
     {
-        throw new NotImplementedException();
+        return _context.Users.Any(x => x.Email == Email);
     }
 
     public User FindById(int id)
     {
-        throw new NotImplementedException();
+        return _context.Users.Find(id);
     }
 
     public void Update(User user)
     {
-        throw new NotImplementedException();
+        _context.Users.Update(user);
     }
 
     public void Remove(User user)
     {
-        throw new NotImplementedException();
+        _context.Users.Remove(user);
     }
     
 }
