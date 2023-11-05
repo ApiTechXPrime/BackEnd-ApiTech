@@ -6,6 +6,7 @@ namespace BackEnd_ApiTech.Shared.Persistence.Contexts;
 
 public class AppDbContext : DbContext
 {
+    public DbSet<Analytic> Analytics { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -25,7 +26,4 @@ public class AppDbContext : DbContext
         
         builder.UseSnakeCaseNamingConvention();
     }
-
-
-    public DbSet<Analytic> Analytics { get; set; }
 }
