@@ -23,7 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="security\Authorization\" />
       <Folder Include="Shared\Domain\" />
       <Folder Include="Shared\Extensions\" />
     </ItemGroup>
