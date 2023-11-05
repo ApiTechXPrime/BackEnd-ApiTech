@@ -24,7 +24,6 @@
     <ItemGroup>
       <Folder Include="security\Authorization\" />
       <Folder Include="security\Controllers\" />
-      <Folder Include="security\Exceptions\" />
       <Folder Include="Shared\Domain\" />
       <Folder Include="Shared\Extensions\" />
     </ItemGroup>
