@@ -1,0 +1,13 @@
+﻿using BackEnd_ApiTech.TechXPrime.Domain.Models;
+
+namespace BackEnd_ApiTech.TechXPrime.Domain.Repositories;
+
+public interface IAnalyticRepository
+{
+    Task<IEnumerable<Analytic>> ListAsync();
+    Task AddAsync(Analytic analytic);
+    Task<Analytic> FindByIdAsync(int id);
+    Task<IEnumerable<Analytic>> FindByMonthAsync(int month);
+    void Update(Analytic analytic);
+    void Remove(Analytic analytic);
+}
