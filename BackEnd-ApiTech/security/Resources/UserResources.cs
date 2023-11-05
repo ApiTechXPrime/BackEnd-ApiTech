@@ -1,8 +1,6 @@
-using System.Text.Json.Serialization;
+namespace BackEnd_ApiTech.security.Resources;
 
-namespace BackEnd_ApiTech.security.Domain.Models;
-
-public class User
+public class UserResources
 {
     public enum UserRole
     {
@@ -14,10 +12,4 @@ public class User
     public string Email { get; set; }
     public string Birthday { get; set; }
     public UserRole Role { get; set; }
-    [JsonIgnore]
-    public string Password { get; set; }
-    
-    [JsonIgnore]
-    public string ConfirmPassword { get; set; }
-
 }

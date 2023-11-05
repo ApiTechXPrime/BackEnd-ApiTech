@@ -1,23 +1,26 @@
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
-namespace BackEnd_ApiTech.security.Domain.Models;
+namespace BackEnd_ApiTech.security.Services.Communication;
 
-public class User
+public class RegisterRequest
 {
     public enum UserRole
     {
         Client,
         Technical
     }
-    public int Id { get; set; }
-    public string FullName { get; set; }
-    public string Email { get; set; }
-    public string Birthday { get; set; }
-    public UserRole Role { get; set; }
-    [JsonIgnore]
-    public string Password { get; set; }
     
-    [JsonIgnore]
+    [Required]
+    public string FullName { get; set; }
+    [Required]
+    public string Email { get; set; }
+    [Required]
+    public string Birthday { get; set; }
+    [Required]
+    public string Password { get; set; }
+    [Required]
     public string ConfirmPassword { get; set; }
-
+    [Required]
+    public UserRole Role { get; set; }
+    
 }
