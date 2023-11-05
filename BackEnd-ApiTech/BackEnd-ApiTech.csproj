@@ -20,7 +20,6 @@
 
     <ItemGroup>
       <Folder Include="TechXPrime\Domain\Repositories\" />
-      <Folder Include="TechXPrime\Domain\Services\" />
     </ItemGroup>
 
 </Project>
