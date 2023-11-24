@@ -11,9 +11,6 @@ public class User
     public string Birthday { get; set; }
     
     [JsonIgnore]
-    public string Password { get; set; }
-    
-    [JsonIgnore]
-    public string ConfirmPassword { get; set; }
+    public string PasswordHash { get; set; }
 
 }

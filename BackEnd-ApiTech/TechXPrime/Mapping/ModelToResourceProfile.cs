@@ -10,5 +10,6 @@ public class ModelToResourceProfile : Profile
     {
         CreateMap<Analytic, AnalyticResource>();
         CreateMap<Order, OrderResource>();
+        CreateMap<Request, RequestResource>();
     }
 }

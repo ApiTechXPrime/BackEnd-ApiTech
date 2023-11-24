@@ -51,7 +51,7 @@ public class OrdersController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         var order = _mapper.Map<SaveOrderResource, Order>(resource);
-        var result = await _orderService.SaveAsync(order);
+        var result = await _orderService.UpdateAsync(id, order);
         if (!result.Success)
             return BadRequest(result.Message);
         var orderResource = _mapper.Map<Order, OrderResource>(result.Resource);

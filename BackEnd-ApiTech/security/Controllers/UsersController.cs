@@ -3,7 +3,7 @@ using BackEnd_ApiTech.security.Domain.Models;
 using BackEnd_ApiTech.security.Domain.Services.Communication;
 using BackEnd_ApiTech.security.Resources;
 using BackEnd_ApiTech.security.Services.Communication;
-using Microsoft.AspNetCore.Authorization;
+using BackEnd_ApiTech.security.Authorization.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd_ApiTech.security.Controllers;
