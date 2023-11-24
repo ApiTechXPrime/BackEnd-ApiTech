@@ -145,8 +145,6 @@ app.UseMiddleware<ErrorHandlerMiddleware>();
 // Configure JWT Handling
 app.UseMiddleware<JwtMiddleware>();
 
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
