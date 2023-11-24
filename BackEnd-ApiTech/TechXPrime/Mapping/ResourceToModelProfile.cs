@@ -9,5 +9,6 @@ public class ResourceToModelProfile : Profile
     public ResourceToModelProfile()
     {
         CreateMap<SaveAnalyticResource, Analytic>();
+        CreateMap<SaveOrderResource, Order>();
     }
 }

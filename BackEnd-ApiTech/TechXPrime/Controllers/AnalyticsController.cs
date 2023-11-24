@@ -36,14 +36,14 @@ public class AnalyticsController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
-        var category = _mapper.Map<SaveAnalyticResource, 
+        var analytic = _mapper.Map<SaveAnalyticResource, 
             Analytic>(resource);
-        var result = await _analyticService.SaveAsync(category);
+        var result = await _analyticService.SaveAsync(analytic);
         if (!result.Success)
             return BadRequest(result.Message);
-        var categoryResource = _mapper.Map<Analytic, 
+        var analyticResource = _mapper.Map<Analytic, 
             AnalyticResource>(result.Resource);
-        return Ok(categoryResource);
+        return Ok(analyticResource);
     }
     
     [HttpPut("{id}")]
@@ -53,15 +53,15 @@ public class AnalyticsController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
  
-        var category = _mapper.Map<SaveAnalyticResource, 
+        var analytic = _mapper.Map<SaveAnalyticResource, 
             Analytic>(resource);
-        var result = await _analyticService.UpdateAsync(id, category);
+        var result = await _analyticService.UpdateAsync(id, analytic);
  
         if (!result.Success)
             return BadRequest(result.Message);
-        var categoryResource = _mapper.Map<Analytic, 
+        var analyticResource = _mapper.Map<Analytic, 
             AnalyticResource>(result.Resource);
-        return Ok(categoryResource);
+        return Ok(analyticResource);
     }
     
     [HttpDelete("{id}")]
@@ -71,9 +71,9 @@ public class AnalyticsController : ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
  
-        var categoryResource = _mapper.Map<Analytic, 
+        var analyticResource = _mapper.Map<Analytic, 
             AnalyticResource>(result.Resource);
-        return Ok(categoryResource);
+        return Ok(analyticResource);
     }
 
 }

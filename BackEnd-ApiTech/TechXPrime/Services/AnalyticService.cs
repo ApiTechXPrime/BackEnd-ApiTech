@@ -37,7 +37,7 @@ public class AnalyticService : IAnalyticService
         }
         catch (Exception e)
         {
-            return new AnalyticResponse($"An error occurred while saving the category: {e.Message}");
+            return new AnalyticResponse($"An error occurred while saving the analytic: {e.Message}");
         }
 
     }
@@ -46,7 +46,7 @@ public class AnalyticService : IAnalyticService
     {
         var existingAnalytic = await _analyticRepository.FindByIdAsync(id);
         if (existingAnalytic == null)
-            return new AnalyticResponse("Category not found.");
+            return new AnalyticResponse("Analytic not found.");
         existingAnalytic.Incomes = analytic.Incomes;
         existingAnalytic.Expenses = analytic.Expenses;
         existingAnalytic.Profits = analytic.Profits;
@@ -58,7 +58,7 @@ public class AnalyticService : IAnalyticService
         }
         catch (Exception e)
         {
-            return new AnalyticResponse($"An error occurred while updating the category: {e.Message}");
+            return new AnalyticResponse($"An error occurred while updating the analytic: {e.Message}");
         }
     }
 

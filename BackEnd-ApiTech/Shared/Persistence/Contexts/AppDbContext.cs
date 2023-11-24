@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Analytic> Analytics { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Order> Orders { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -33,7 +34,21 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => p.Birthday).IsRequired();
         builder.Entity<User>().Property(p => p.Password).IsRequired();
         builder.Entity<User>().Property(p => p.ConfirmPassword).IsRequired();
-        
+
+        builder.Entity<Order>().ToTable("Orders");
+        builder.Entity<Order>().HasKey(p => p.Id);
+        builder.Entity<Order>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Order>().Property(p => p.TechnicalId).IsRequired();
+        builder.Entity<Order>().Property(p => p.ClientName).IsRequired();
+        builder.Entity<Order>().Property(p => p.PhoneName).IsRequired();
+        builder.Entity<Order>().Property(p => p.Problem).IsRequired();
+        builder.Entity<Order>().Property(p => p.ComponentsToUse).IsRequired();
+        builder.Entity<Order>().Property(p => p.ValueProgress).HasDefaultValue(0);
+        builder.Entity<Order>().Property(p => p.DeliveryDay).IsRequired();
+        builder.Entity<Order>().Property(p => p.Income).IsRequired();
+        builder.Entity<Order>().Property(p => p.Finished).HasDefaultValue(0);
+        builder.Entity<Order>().Property(p => p.Investment).IsRequired();
+        builder.Entity<Order>().ToTable(t => t.HasCheckConstraint("CK_Order_ValueProgress", "value_progress >= 0 AND value_progress <= 100"));
         
         builder.UseSnakeCaseNamingConvention();
     }
