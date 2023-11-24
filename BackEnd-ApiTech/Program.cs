@@ -122,14 +122,16 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 
 // Configure the HTTP request pipeline.
 
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("v1/swagger.json", "v1");
+    options.RoutePrefix = "swagger";
+});
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("v1/swagger.json", "v1");
-        options.RoutePrefix = "swagger";
-    });
+    app.UseHttpsRedirection();
 }
 
 // Configure CORS 
