@@ -22,11 +22,11 @@ public class RequestsController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IEnumerable<RequestResponse>> GetAllAsync()
+    public async Task<IEnumerable<RequestResource>> GetAllAsync()
     {
         var requests = await _requestService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Request>,
-            IEnumerable<RequestResponse>>(requests);
+            IEnumerable<RequestResource>>(requests);
         return resources;
     }
 

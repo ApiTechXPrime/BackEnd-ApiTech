@@ -94,6 +94,8 @@ builder.Services.AddScoped<IOrderRepository, OrdersRepository>();
 builder.Services.AddScoped<IOrderService, OrdersService>();
 builder.Services.AddScoped<IRequestRepository, RequestsRepository>();
 builder.Services.AddScoped<IRequestService, RequestsService>();
+builder.Services.AddScoped<ITechnicalRepository, TechnicalsRepository>();
+builder.Services.AddScoped<ITechnicalService, TechnicalsService>();
 
 // Security Injection Configuration
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();

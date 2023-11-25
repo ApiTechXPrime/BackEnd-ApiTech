@@ -22,11 +22,11 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<OrderResponse>> GetAllAsync()
+    public async Task<IEnumerable<OrderResource>> GetAllAsync()
     {
         var orders = await _orderService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Order>, 
-            IEnumerable<OrderResponse>>(orders);
+            IEnumerable<OrderResource>>(orders);
         return resources;
     }
 
