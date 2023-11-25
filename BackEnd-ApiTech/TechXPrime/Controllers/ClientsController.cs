@@ -24,7 +24,7 @@ public class ClientsController : ControllerBase
     public async Task<IEnumerable<ClientResource>> GetAllAsync()
     {
         var clients = await _clientService.ListAsync();
-        var resources = _mapper.Map<IEnumerable<ClientResource>>(clients);
+        var resources = _mapper.Map<IEnumerable<Client>, IEnumerable<ClientResource>>(clients);
         return resources;
     }
 
@@ -32,7 +32,7 @@ public class ClientsController : ControllerBase
     public async Task<ClientResource> GetClientByEmailAsync(string email)
     {
         var client = await _clientService.FindByEmailAsync(email);
-        var resource = _mapper.Map<ClientResource>(client);
+        var resource = _mapper.Map<Client, ClientResource>(client);
         return resource;
     }
 
@@ -41,11 +41,11 @@ public class ClientsController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
-        var client = _mapper.Map<Client>(resource);
+        var client = _mapper.Map<SaveClientResource, Client>(resource);
         var result = await _clientService.SaveAsync(client);
         if (!result.Success)
             return BadRequest(result.Message);
-        var clientResource = _mapper.Map<ClientResource>(result.Resource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
         return Ok(clientResource);
     }
 
@@ -54,11 +54,11 @@ public class ClientsController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
-        var client = _mapper.Map<Client>(resource);
+        var client = _mapper.Map<SaveClientResource ,Client>(resource);
         var result = await _clientService.UpdateAsync(id, client);
         if (!result.Success)
             return BadRequest(result.Message);
-        var clientResource = _mapper.Map<ClientResource>(result.Resource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
         return Ok(clientResource);
     }
 
@@ -68,7 +68,7 @@ public class ClientsController : ControllerBase
         var result = await _clientService.DeleteAsync(id);
         if (!result.Success)
             BadRequest(result.Message);
-        var clientResource = _mapper.Map<ClientResource>(result.Resource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
         return Ok(clientResource);
     }
 }

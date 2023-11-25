@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using BackEnd_ApiTech.TechXPrime.Domain.Models;
 using BackEnd_ApiTech.TechXPrime.Resources;
-using Client = MySqlX.XDevAPI.Client;
 
 namespace BackEnd_ApiTech.TechXPrime.Mapping;
 
