@@ -7,6 +7,7 @@ public interface ITechnicalService
 {
     Task<IEnumerable<Technical>> ListAsync();
     Task<Technical> FindByEmail(string email);
+    Task<Technical> FindById(int id);
     Task<TechnicalResponse> SaveAsync(Technical technical);
     Task<TechnicalResponse> UpdateAsync(int id, Technical technical);
     Task<TechnicalResponse> DeleteAsync(int id);

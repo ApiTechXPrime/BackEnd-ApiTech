@@ -27,6 +27,11 @@ public class TechnicalsService : ITechnicalService
         return await _technicalRepository.FindByEmailAsync(email);
     }
 
+    public async Task<Technical> FindById(int id)
+    {
+        return await _technicalRepository.FindByIdAsync(id);
+    }
+
     public async Task<TechnicalResponse> SaveAsync(Technical technical)
     {
         try
@@ -47,10 +52,12 @@ public class TechnicalsService : ITechnicalService
         if (existingTechnical == null)
             return new TechnicalResponse("Technical not found.");
         existingTechnical.FullName = technical.FullName;
+        existingTechnical.Experience = technical.Experience;
         existingTechnical.Location = technical.Location;
         existingTechnical.Image = technical.Image;
         existingTechnical.ConsultationPrice = technical.ConsultationPrice;
         existingTechnical.Number = technical.Number;
+        existingTechnical.AboutHim = technical.AboutHim;
         try
         {
             _technicalRepository.Update(existingTechnical);

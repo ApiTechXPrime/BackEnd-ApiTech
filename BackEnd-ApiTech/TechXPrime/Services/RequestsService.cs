@@ -21,7 +21,12 @@ public class RequestsService : IRequestService
     {
         return await _requestRepository.ListByTechnicalIdAsync(technicalId);
     }
-    
+
+    public async Task<Request> FindById(int id)
+    {
+        return await _requestRepository.FindByIdAsync(id);
+    }
+
     public async Task<IEnumerable<Request>> ListAsync()
     {
         return await _requestRepository.ListAsync();

@@ -2,7 +2,6 @@
 using BackEnd_ApiTech.Shared.Extensions;
 using BackEnd_ApiTech.TechXPrime.Domain.Models;
 using BackEnd_ApiTech.TechXPrime.Domain.Services;
-using BackEnd_ApiTech.TechXPrime.Domain.Services.Communication;
 using BackEnd_ApiTech.TechXPrime.Resources;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +27,14 @@ public class RequestsController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Request>,
             IEnumerable<RequestResource>>(requests);
         return resources;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<RequestResource> GetByIdAsync(int id)
+    {
+        var request = await _requestService.FindById(id);
+        var resource = _mapper.Map<Request, RequestResource>(request);
+        return resource;
     }
 
     [HttpPost]

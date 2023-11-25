@@ -39,6 +39,14 @@ public class TechnicalsController : ControllerBase
         return resource;
     }
 
+    [HttpGet("{id}")]
+    public async Task<TechnicalResource> GetTechnicalById(int id)
+    {
+        var technical = await _technicalService.FindById(id);
+        var resource = _mapper.Map<Technical, TechnicalResource>(technical);
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] 
         SaveTechnicalResource resource)
