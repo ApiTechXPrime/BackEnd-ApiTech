@@ -22,6 +22,11 @@ public class TechnicalsService : ITechnicalService
         return await _technicalRepository.ListAsync();
     }
 
+    public async Task<Technical> FindByEmail(string email)
+    {
+        return await _technicalRepository.FindByEmailAsync(email);
+    }
+
     public async Task<TechnicalResponse> SaveAsync(Technical technical)
     {
         try

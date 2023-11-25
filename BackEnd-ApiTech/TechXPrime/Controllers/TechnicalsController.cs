@@ -29,6 +29,15 @@ public class TechnicalsController : ControllerBase
             IEnumerable<TechnicalResource>>(technicals);
         return resources;
     }
+    
+    [HttpGet("email")]
+    public async Task<TechnicalResource> GetTechnicalByEmailAsync([FromQuery] string email)
+    {
+        var technical = await _technicalService.FindByEmail(email);
+        var resource = _mapper.Map<Technical,
+            TechnicalResource>(technical);
+        return resource;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] 

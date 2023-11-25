@@ -27,6 +27,11 @@ public class TechnicalsRepository : BaseRepository, ITechnicalRepository
         return await _context.Technicals.FindAsync(id);
     }
 
+    public async Task<Technical> FindByEmailAsync(string email)
+    {
+        return await _context.Technicals.SingleOrDefaultAsync(t => t.Email == email);
+    }
+
     public void Update(Technical technical)
     {
         _context.Technicals.Update(technical);

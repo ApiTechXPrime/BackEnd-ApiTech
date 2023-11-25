@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<Request> Requests { get; set; }
     public DbSet<Technical> Technicals { get; set; }
+    public DbSet<Client> Clients { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -70,13 +71,26 @@ public class AppDbContext : DbContext
         builder.Entity<Technical>().Property(p => p.FullName).IsRequired();
         builder.Entity<Technical>().Property(p => p.Password).IsRequired();
         builder.Entity<Technical>().Property(p => p.Birthday).IsRequired();
-        builder.Entity<Technical>().Property(p => p.Experience).IsRequired();
+        builder.Entity<Technical>().Property(p => p.Email).IsRequired();
+        builder.Entity<Technical>().Property(p => p.Experience);
         builder.Entity<Technical>().Property(p => p.Qualification);
         builder.Entity<Technical>().Property(p => p.Location);
         builder.Entity<Technical>().Property(p => p.AboutHim);
         builder.Entity<Technical>().Property(p => p.Image);
         builder.Entity<Technical>().Property(p => p.ConsultationPrice);
         builder.Entity<Technical>().Property(p => p.Number);
+
+        builder.Entity<Client>().ToTable("Clients");
+        builder.Entity<Client>().HasKey(p => p.Id);
+        builder.Entity<Client>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Client>().Property(p => p.FullName).IsRequired();
+        builder.Entity<Client>().Property(p => p.Email).IsRequired();
+        builder.Entity<Client>().Property(p => p.Password).IsRequired();
+        builder.Entity<Client>().Property(p => p.Birthday).IsRequired();
+        builder.Entity<Client>().Property(p => p.Cellphone);
+        builder.Entity<Client>().Property(p => p.Problem);
+        builder.Entity<Client>().Property(p => p.Time);
+        builder.Entity<Client>().Property(p => p.Number);
         
         builder.UseSnakeCaseNamingConvention();
     }

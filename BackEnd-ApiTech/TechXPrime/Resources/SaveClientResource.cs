@@ -1,8 +1,7 @@
-﻿namespace BackEnd_ApiTech.TechXPrime.Domain.Models;
+﻿namespace BackEnd_ApiTech.TechXPrime.Resources;
 
-public class Client
+public class SaveClientResource
 {
-    public int Id { get; set; }
     public string FullName { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
