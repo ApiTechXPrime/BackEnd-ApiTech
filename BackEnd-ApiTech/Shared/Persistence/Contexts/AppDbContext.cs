@@ -45,7 +45,7 @@ public class AppDbContext : DbContext
         builder.Entity<Order>().Property(p => p.Problem).IsRequired();
         builder.Entity<Order>().Property(p => p.ComponentsToUse).IsRequired();
         builder.Entity<Order>().Property(p => p.ValueProgress).HasDefaultValue(0);
-        builder.Entity<Order>().Property(p => p.DeliveryDay).IsRequired().HasColumnType("date");
+        builder.Entity<Order>().Property(p => p.DeliveryDay).IsRequired();
         builder.Entity<Order>().Property(p => p.Income).IsRequired();
         builder.Entity<Order>().Property(p => p.Finished).HasDefaultValue(0);
         builder.Entity<Order>().Property(p => p.Investment).IsRequired();
